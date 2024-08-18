@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.BudgetTrackerApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryVariant">@color/red</item>
+        <item name="android:textColor">@color/textMain</item>
+        <item name="colorControlActivated">@color/green</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="Theme.BudgetTrackerApp" parent="Base.Theme.BudgetTrackerApp" >
+        <item name="colorControlActivated">@color/blue</item>
+        <item name="colorPrimary">@color/blue</item>
+    </style>
+</resources>
