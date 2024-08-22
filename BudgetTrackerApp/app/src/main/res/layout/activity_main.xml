@@ -6,33 +6,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="644dp"
         tools:context=".MainActivity">
+
+        <ImageButton
+            android:id="@+id/settingsBtn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="12dp"
+            android:background="@null"
+            android:src="@drawable/settings_bg" />
 
         <LinearLayout
             android:id="@+id/balance_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="18dp"
-            android:gravity="center">
+            android:layout_marginEnd="100dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total Balance"
                 android:textAllCaps="true"
-                android:textStyle="bold"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="500 RON"
                 android:textSize="32sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
+
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
@@ -40,57 +54,64 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/balance_layout"
-            android:layout_marginTop="12dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="10dp"
             app:cardCornerRadius="12dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_weight="0.5"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/budget"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="700 RON"
-                        android:textStyle="bold"
+                        android:textColor="@color/green"
                         android:textSize="26sp"
-                        android:textColor="@color/green"/>
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Budget"
                         android:textAllCaps="true"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_weight="0.5"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/expense"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="200 RON"
-                        android:textStyle="bold"
+                        android:textColor="@color/red"
                         android:textSize="26sp"
-                        android:textColor="@color/red"/>
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Expenses"
                         android:textAllCaps="true"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -99,27 +120,36 @@
             android:id="@+id/recyclerview_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Transactions"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            android:textAllCaps="true"
             android:layout_below="@id/dashboard"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
-            android:layout_marginStart="20dp"/>
+            android:text="Transactions"
+            android:textAllCaps="true"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="400dp"
+            android:layout_height="356dp"
             android:layout_below="@id/recyclerview_title"
-            android:layout_margin="10dp"/>
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_margin="10dp"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:src="@drawable/baseline_add"
             app:backgroundTint="@color/black"
             app:tint="@color/blue" />

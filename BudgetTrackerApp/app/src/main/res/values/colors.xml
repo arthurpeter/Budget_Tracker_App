@@ -8,4 +8,5 @@
     <color name="btn">#A20B00</color>
     <color name="background">#C7C7C7</color>
     <color name="blue">#00BCD4</color>
+    <color name="primary_text_color">#60F5F4F6</color>
 </resources>

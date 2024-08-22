@@ -1,8 +1,6 @@
 package com.android.budgettrackerapp
 
 import android.annotation.SuppressLint
-import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -19,7 +17,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
     private lateinit var deletedTransaction: Transaction
@@ -77,6 +74,10 @@ class MainActivity : AppCompatActivity() {
         binding.addBtn.setOnClickListener {
             showAlertDialog()
         }
+
+        binding.settingsBtn.setOnClickListener {
+            changeActivity(ChangeCurrencyActivity::class.java)
+        }
     }
 
     private fun fetchAll() {
@@ -95,9 +96,9 @@ class MainActivity : AppCompatActivity() {
         val budgetAmount = transactions.filter { it.amount > 0 }.sumOf { it.amount }
         val expenseAmount = totalAmount - budgetAmount
 
-        binding.balance.text = "%.2f RON".format(totalAmount)
-        binding.budget.text = "%.2f RON".format(budgetAmount)
-        binding.expense.text = "%.2f RON".format(expenseAmount)
+        binding.balance.text = "%.2f ${CurrencySettings.currency}".format(totalAmount)
+        binding.budget.text = "%.2f ${CurrencySettings.currency}".format(budgetAmount)
+        binding.expense.text = "%.2f ${CurrencySettings.currency}".format(expenseAmount)
     }
 
     private fun undoDelete() {

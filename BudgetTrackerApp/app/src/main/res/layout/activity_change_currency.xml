@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChangeCurrencyActivity">
+
+    <ImageButton
+        android:id="@+id/closeBtn"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_margin="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/close_bg"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choose your prefered currency"
+            android:textAllCaps="true"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/eurBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1 EUR = 4.98 RON"
+            android:textAllCaps="true"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:textColor="@drawable/text_selector"/>
+
+        <TextView
+            android:id="@+id/usdBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1 USD = 4.48 RON"
+            android:textAllCaps="true"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:textColor="@drawable/text_selector"/>
+
+        <TextView
+            android:id="@+id/ronBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1 RON = 1 RON"
+            android:textAllCaps="true"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:textColor="@drawable/text_selector"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/updateCurrencyBtn"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:text="Apply changes"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="24dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
