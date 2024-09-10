@@ -56,6 +56,13 @@ class ChangeCurrencyActivity : AppCompatActivity() {
             binding.updateCurrencyBtn.visibility = View.VISIBLE
         }
 
+        binding.gbpBtn.setOnClickListener {
+            fetchAndDisplayExchangeRate(Currency.GBP)
+            selectedCurrency = Currency.GBP
+            highlightSelectedCurrency()
+            binding.updateCurrencyBtn.visibility = View.VISIBLE
+        }
+
         binding.ronBtn.setOnClickListener {
             fetchAndDisplayExchangeRate(Currency.RON)
             selectedCurrency = Currency.RON
@@ -72,7 +79,8 @@ class ChangeCurrencyActivity : AppCompatActivity() {
         }
 
         binding.closeBtn.setOnClickListener {
-            finish()
+            changeActivity(MainActivity::class.java)
+            finishAffinity()
         }
     }
 
@@ -80,17 +88,20 @@ class ChangeCurrencyActivity : AppCompatActivity() {
         binding.ronBtn.text = "1 RON = ? ${CurrencySettings.currency}"
         binding.eurBtn.text = "1 EUR = ? ${CurrencySettings.currency}"
         binding.usdBtn.text = "1 USD = ? ${CurrencySettings.currency}"
+        binding.gbpBtn.text = "1 GBP = ? ${CurrencySettings.currency}"
     }
 
     private fun highlightSelectedCurrency() {
         binding.eurBtn.isSelected = (selectedCurrency == Currency.EUR)
         binding.usdBtn.isSelected = (selectedCurrency == Currency.USD)
+        binding.gbpBtn.isSelected = (selectedCurrency == Currency.GBP)
         binding.ronBtn.isSelected = (selectedCurrency == Currency.RON)
     }
 
     private fun stopHighlight() {
         binding.eurBtn.isSelected = false
         binding.usdBtn.isSelected = false
+        binding.gbpBtn.isSelected = false
         binding.ronBtn.isSelected = false
     }
 
@@ -101,11 +112,15 @@ class ChangeCurrencyActivity : AppCompatActivity() {
         GlobalScope.launch {
             val transactions = db.transactionDao().getAll()
             for (transaction in transactions) {
-                transaction.amount /= exchangeRate
-                db.transactionDao().update(transaction)
+                val updatedTransaction = Transaction(transaction.id,
+                    transaction.label, transaction.amount,
+                    transaction.description, transaction.currency,
+                    transaction.exchangeRate * exchangeRate)
+                db.transactionDao().update(updatedTransaction)
             }
             CurrencySettings.currency = selectedCurrency
-            finish()
+            changeActivity(MainActivity::class.java)
+            finishAffinity()
         }
     }
 
@@ -156,6 +171,7 @@ class ChangeCurrencyActivity : AppCompatActivity() {
                     when (from) {
                         Currency.EUR -> binding.eurBtn.text = "1 EUR = $formattedRate ${CurrencySettings.currency}"
                         Currency.USD -> binding.usdBtn.text = "1 USD = $formattedRate ${CurrencySettings.currency}"
+                        Currency.GBP -> binding.gbpBtn.text = "1 GBP = $formattedRate ${CurrencySettings.currency}"
                         Currency.RON -> binding.ronBtn.text = "1 RON = $formattedRate ${CurrencySettings.currency}"
                     }
                 }

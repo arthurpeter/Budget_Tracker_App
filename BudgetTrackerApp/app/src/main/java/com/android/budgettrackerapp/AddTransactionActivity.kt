@@ -65,7 +65,7 @@ class AddTransactionActivity : AppCompatActivity() {
                 if (intent.getBooleanExtra("purchase", true)) {
                     amount = -amount
                 }
-                val transaction = Transaction(0, label, amount, description)
+                val transaction = Transaction(0, label, amount, description, CurrencySettings.currency, 1.0)
                 insert(transaction)
             }
         }

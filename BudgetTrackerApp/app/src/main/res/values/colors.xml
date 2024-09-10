@@ -9,4 +9,6 @@
     <color name="background">#C7C7C7</color>
     <color name="blue">#00BCD4</color>
     <color name="primary_text_color">#60F5F4F6</color>
+    <color name="red2">#ea3b52</color>
+    <color name="green2">#77c79d</color>
 </resources>

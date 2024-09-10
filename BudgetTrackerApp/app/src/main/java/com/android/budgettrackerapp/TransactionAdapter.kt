@@ -32,11 +32,11 @@ class TransactionAdapter(private var transactions: List<Transaction>):
         val context = holder.amount.context
 
         if (transaction.amount >= 0) {
-            holder.amount.text = "+ %.2f ${CurrencySettings.currency}".format(transaction.amount)
-            holder.amount.setTextColor(ContextCompat.getColor(context, R.color.green))
+            holder.amount.text = "+ %.2f ${transaction.currency}".format(transaction.amount)
+            holder.amount.setTextColor(ContextCompat.getColor(context, R.color.green2))
         } else {
-            holder.amount.text = "- %.2f ${CurrencySettings.currency}".format(abs(transaction.amount))
-            holder.amount.setTextColor(ContextCompat.getColor(context, R.color.red))
+            holder.amount.text = "- %.2f ${transaction.currency}".format(abs(transaction.amount))
+            holder.amount.setTextColor(ContextCompat.getColor(context, R.color.red2))
         }
 
         holder.label.text = transaction.label

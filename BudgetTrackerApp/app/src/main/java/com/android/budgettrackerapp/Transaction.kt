@@ -9,6 +9,8 @@ import java.io.Serializable
 data class Transaction (
     @PrimaryKey(autoGenerate = true) val id: Int,
     val label: String,
-    var amount: Double,
-    val description: String) : Serializable{
+    val amount: Double,
+    val description: String,
+    val currency: Currency,
+    val exchangeRate: Double) : Serializable{
 }

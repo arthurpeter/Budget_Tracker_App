@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.settingsBtn.setOnClickListener {
-            changeActivity(ChangeCurrencyActivity::class.java)
+            changeActivity(SettingsActivity::class.java)
         }
     }
 
@@ -92,8 +92,8 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun updateDashboard() {
-        val totalAmount = transactions.sumOf { it.amount }
-        val budgetAmount = transactions.filter { it.amount > 0 }.sumOf { it.amount }
+        val totalAmount = transactions.sumOf { it.amount / it.exchangeRate}
+        val budgetAmount = transactions.filter { it.amount > 0 }.sumOf { it.amount / it.exchangeRate}
         val expenseAmount = totalAmount - budgetAmount
 
         binding.balance.text = "%.2f ${CurrencySettings.currency}".format(totalAmount)

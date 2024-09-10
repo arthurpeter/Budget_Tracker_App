@@ -70,7 +70,8 @@ class DetailedActivity : AppCompatActivity() {
             } else if (amount == null) {
                 binding.amountLayout.error = "Please enter a valid amount"
             } else {
-                val transaction = Transaction(transaction.id, label, amount, description)
+                val transaction = Transaction(transaction.id, label, amount,
+                    description, transaction.currency, transaction.exchangeRate)
                 update(transaction)
             }
         }
